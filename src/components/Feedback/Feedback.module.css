@@ -27,8 +27,3 @@
 .btn:active {
   background-color: #e6e6e6;
 }
-
-.item {
-  margin-bottom: 8px;
-  text-transform: capitalize;
-}

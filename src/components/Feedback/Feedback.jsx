@@ -1,5 +1,7 @@
 import { Component } from 'react';
 
+import Statistics from 'components/Feedback/Statistics/Statistics';
+
 import css from './Feedback.module.css';
 
 const feedbackOptions = ['good', 'neutral', 'bad'];
@@ -19,6 +21,7 @@ class Feedback extends Component {
     const { good, neutral, bad } = this.state;
     return good + neutral + bad;
   }
+
   countPositiveFeedbackPercentage() {
     const { good } = this.state;
     const total = this.countTotalFeedback();
@@ -44,7 +47,7 @@ class Feedback extends Component {
           ))}
         </div>
 
-        <div>
+        {/* <div>
           <h2 className={css.title}>Statistics</h2>
           <ul>
             {feedbackOptions.map(option => (
@@ -55,10 +58,12 @@ class Feedback extends Component {
           </ul>
           <p className={css.item}>total : {total}</p>
           <p className={css.item}>positive feedback : {positiveFeedback}%</p>
-        </div>
+        </div> */}
+        <Statistics total={total} positivePercentage={positiveFeedback} />
       </div>
     );
   }
 }
 
 export default Feedback;
+// good={} neutral={} bad={}
