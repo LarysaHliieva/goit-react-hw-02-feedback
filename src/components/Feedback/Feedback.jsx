@@ -29,6 +29,7 @@ class Feedback extends Component {
   }
 
   render() {
+    const { good, neutral, bad } = this.state;
     const total = this.countTotalFeedback();
     const positiveFeedback = this.countPositiveFeedbackPercentage();
     return (
@@ -47,23 +48,16 @@ class Feedback extends Component {
           ))}
         </div>
 
-        {/* <div>
-          <h2 className={css.title}>Statistics</h2>
-          <ul>
-            {feedbackOptions.map(option => (
-              <li key={option} className={css.item}>
-                {option}: {this.state[option]}
-              </li>
-            ))}
-          </ul>
-          <p className={css.item}>total : {total}</p>
-          <p className={css.item}>positive feedback : {positiveFeedback}%</p>
-        </div> */}
-        <Statistics total={total} positivePercentage={positiveFeedback} />
+        <Statistics
+          good={good}
+          neutral={neutral}
+          bad={bad}
+          total={total}
+          positivePercentage={positiveFeedback}
+        />
       </div>
     );
   }
 }
 
 export default Feedback;
-// good={} neutral={} bad={}
