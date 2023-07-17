@@ -1,6 +1,8 @@
 import { Component } from 'react';
 
 import Statistics from 'components/Feedback/Statistics/Statistics';
+import FeedbackOptions from 'components/Feedback/FeedbackOptions/FeedbackOptions';
+import Section from 'components/Section/Section';
 
 import css from './Feedback.module.css';
 
@@ -34,27 +36,23 @@ class Feedback extends Component {
     const positiveFeedback = this.countPositiveFeedbackPercentage();
     return (
       <div className={css.feedback}>
-        <h2 className={css.title}>Please leave feedback</h2>
-        <div className={css.btnWrap}>
-          {feedbackOptions.map(option => (
-            <button
-              key={option}
-              className={css.btn}
-              type="button"
-              onClick={() => this.onAddOption(option)}
-            >
-              {option}
-            </button>
-          ))}
-        </div>
+        <Section title="Please leave feedback">
+          <FeedbackOptions
+            options={feedbackOptions}
+            onLeaveFeedback={this.onAddOption}
+          />
+        </Section>
 
-        <Statistics
-          good={good}
-          neutral={neutral}
-          bad={bad}
-          total={total}
-          positivePercentage={positiveFeedback}
-        />
+        <Section title="Statistics">
+          <Statistics
+            options={feedbackOptions}
+            good={good}
+            neutral={neutral}
+            bad={bad}
+            total={total}
+            positivePercentage={positiveFeedback}
+          />
+        </Section>
       </div>
     );
   }
